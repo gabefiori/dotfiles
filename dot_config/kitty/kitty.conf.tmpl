@@ -1,6 +1,10 @@
 font_family Berkeley Mono
 
+{{- if eq .chezmoi.os "darwin" }}
+font_size 18
+{{- else if eq .chezmoi.os "linux" }}
 font_size 14
+{{- end }}
 
 cursor_shape block
 shell_integration no-cursor
