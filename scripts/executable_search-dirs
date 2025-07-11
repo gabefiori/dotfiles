@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+selected=$(find ~/dev ~/.dotfiles -mindepth 0 -maxdepth 1 -path '*/.git' -prune -o -type d -print | fzf)
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+echo $selected
