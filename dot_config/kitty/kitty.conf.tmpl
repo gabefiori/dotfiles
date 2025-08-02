@@ -17,6 +17,34 @@ wayland_enable_ime no
 
 enable_audio_bell no
 
+enabled_layouts splits:split_axis=horizontal
+map ctrl+b>o launch --cwd=current --location=vsplit
+map ctrl+b>e launch --cwd=current --location=hsplit
+map ctrl+b>c launch --cwd=current --type=tab
+
+map ctrl+b>1 goto_tab 1
+map ctrl+b>2 goto_tab 2
+map ctrl+b>3 goto_tab 3
+map ctrl+b>4 goto_tab 4
+map ctrl+b>5 goto_tab 5
+map ctrl+b>n next_tab
+map ctrl+b>p previous_tab
+
+map ctrl+b>h neighboring_window left
+map ctrl+b>l neighboring_window right
+map ctrl+b>j neighboring_window down
+map ctrl+b>k neighboring_window up
+
+map ctrl+b>v show_scrollback
+
+tab_bar_align center
+tab_bar_style separator
+tab_separator " | "
+tab_title_template "{index}:{title}"
+tab_bar_margin_height 0.0 0.0
+tab_bar_edge top
+tab_bar_background none
+
 # vim:ft=kitty
 
 ## name: Kanagawa
