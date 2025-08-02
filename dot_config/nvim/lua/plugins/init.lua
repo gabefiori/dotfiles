@@ -1,6 +1,0 @@
-require("plugins.blink")
-require("plugins.fzf")
-require("plugins.kanagawa")
-require("plugins.lualine")
-require("plugins.oil")
-require("plugins.treesitter")
