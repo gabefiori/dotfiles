@@ -1,19 +1,25 @@
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+local map = vim.keymap.set
 
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map("n", "J", "mzJ`z")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set("n", "<C-n>", "<CMD>Oil<CR>")
+map('n', '<C-h>', '<C-w><C-h>')
+map('n', '<C-l>', '<C-w><C-l>')
+map('n', '<C-j>', '<C-w><C-j>')
+map('n', '<C-k>', '<C-w><C-k>')
+
+map({ "n", "v" }, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
+
+map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>S', ':vs #<CR>')
+
+map("n", "<C-n>", "<CMD>Oil<CR>")
