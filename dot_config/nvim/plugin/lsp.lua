@@ -1,6 +1,6 @@
 local set = vim.keymap.set
 
-vim.lsp.enable({ "gopls", "ols", "zls" })
+vim.lsp.enable({ "gopls", "ols", "zls", "clangd" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
