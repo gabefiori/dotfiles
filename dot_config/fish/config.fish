@@ -8,6 +8,7 @@ set -U fish_user_paths $HOME/scripts $fish_user_paths
 
 set -gx EDITOR nvim
 set -gx KUBE_EDITOR nvim
+set -gx MANPAGER "nvim +Man!"
 
 alias vim "nvim"
 alias k "kubectl"
