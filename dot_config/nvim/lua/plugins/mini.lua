@@ -3,7 +3,7 @@ return {
     version = '*',
     config = function()
         require('mini.pairs').setup()
-        require('mini.ai').setup({ n_lines = 10 })
+        require('mini.ai').setup({ n_lines = 50 })
 
         local pick = require('mini.pick')
         pick.setup({ source = { show = pick.default_show } })
