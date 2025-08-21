@@ -19,7 +19,7 @@ map('n', '<C-k>', '<C-w><C-k>')
 map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
 
-map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
-map({ 'n', 'v', 'x' }, '<leader>S', ':vs #<CR>')
+map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>', { silent = true })
+map({ 'n', 'v', 'x' }, '<leader>S', ':vs #<CR>', { silent = true })
 
 map("n", "<C-n>", "<CMD>Oil<CR>")
