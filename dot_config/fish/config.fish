@@ -1,4 +1,5 @@
 set fish_greeting ""
+set -U fish_prompt_pwd_dir_length 0
 
 set -U fish_user_paths $HOME/.cargo/bin/ $fish_user_paths
 set -U fish_user_paths $HOME/go/bin $fish_user_paths
