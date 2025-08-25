@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- PLUGINS
 -- ================================================================================================
 vim.pack.add({
-    { src = "https://github.com/Saghen/blink.cmp", version = "v1.6.0" },
+    { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range('*') },
     { src = "https://github.com/gabefiori/kanagawa.nvim", version = "custom" },
     { src = "https://github.com/echasnovski/mini.nvim" },
     { src = "https://github.com/stevearc/oil.nvim" },
@@ -96,7 +96,7 @@ require('mini.ai').setup()
 local fzf = require('fzf-lua')
 fzf.setup({
     {'ivy', 'hide'},
-    files = { previewer = false },
+    -- files = { previewer = false },
     previewers = {
         builtin = {
             syntax = true,
@@ -116,8 +116,24 @@ require('oil').setup({
 
 require('nvim-treesitter').setup({
     auto_install = true,
-    highlight = { enable = true },
     indent = { enable = true },
+    highlight = {
+        enable = true,
+        disable = function(lang, buf)
+            local max_filesize = 100 * 1024 -- 100 KB
+            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            if ok and stats and stats.size > max_filesize then
+                vim.notify(
+                    "File larger than 100KB treesitter disabled for performance",
+                    vim.log.levels.WARN,
+                    {title = "Treesitter"}
+                )
+                return true
+            end
+        end,
+
+        additional_vim_regex_highlighting = { "markdown" },
+    }
 })
 
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
