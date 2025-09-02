@@ -1,4 +1,4 @@
-local M = {
+return {
     "bash",
     "c",
     "c3",
@@ -38,5 +38,3 @@ local M = {
     "yaml",
     "zig"
 }
-
-return M
