@@ -89,7 +89,6 @@ require("kanagawa").setup({
     },
 })
 
-
 require('mini.pairs').setup()
 require('mini.ai').setup()
 
@@ -126,51 +125,11 @@ vim.cmd.colorscheme("kanagawa")
 -- ================================================================================================
 -- Treesitter
 -- ================================================================================================
-local langs = {
-    "bash",
-    "c",
-    "c3",
-    "cmake",
-    "comment",
-    "commonlisp",
-    "cpp",
-    "css",
-    "dockerfile",
-    "dot",
-    "go",
-    "gomod",
-    "gowork",
-    "html",
-    "http",
-    "java",
-    "javascript",
-    "jsdoc",
-    "jsonc",
-    "latex",
-    "llvm",
-    "lua",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "odin",
-    "python",
-    "regex",
-    "rust",
-    "scheme",
-    "scss",
-    "toml",
-    "tsx",
-    "typescript",
-    "vim",
-    "vimdoc",
-    "yaml",
-    "zig"
-}
-
-require('nvim-treesitter').install(langs)
+local languages = require("languages")
+require('nvim-treesitter').install(languages)
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = langs,
+    pattern = languages,
     callback = function()
         vim.treesitter.start()
         vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
