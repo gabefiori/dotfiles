@@ -114,28 +114,6 @@ require('oil').setup({
     },
 })
 
-require('nvim-treesitter').setup({
-    auto_install = true,
-    indent = { enable = true },
-    highlight = {
-        enable = true,
-        disable = function(lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                vim.notify(
-                    "File larger than 100KB treesitter disabled for performance",
-                    vim.log.levels.WARN,
-                    {title = "Treesitter"}
-                )
-                return true
-            end
-        end,
-
-        additional_vim_regex_highlighting = { "markdown" },
-    }
-})
-
 vim.keymap.set("n", "<C-n>", ":Oil<CR>")
 vim.keymap.set("n", "<leader>ff", fzf.files)
 vim.keymap.set("n", "<leader>fw", fzf.grep_cword)
@@ -144,6 +122,61 @@ vim.keymap.set("v", "<leader>fg", fzf.grep_visual)
 vim.keymap.set("n", "<leader>fr", ":FzfLua live_grep_native resume=true<CR>")
 
 vim.cmd.colorscheme("kanagawa")
+
+-- ================================================================================================
+-- Treesitter
+-- ================================================================================================
+local langs = {
+    "bash",
+    "c",
+    "c3",
+    "cmake",
+    "comment",
+    "commonlisp",
+    "cpp",
+    "css",
+    "dockerfile",
+    "dot",
+    "go",
+    "gomod",
+    "gowork",
+    "html",
+    "http",
+    "java",
+    "javascript",
+    "jsdoc",
+    "jsonc",
+    "latex",
+    "llvm",
+    "lua",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "odin",
+    "python",
+    "regex",
+    "rust",
+    "scheme",
+    "scss",
+    "toml",
+    "tsx",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "yaml",
+    "zig"
+}
+
+require('nvim-treesitter').install(langs)
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = langs,
+    callback = function()
+        vim.treesitter.start()
+        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})
 
 -- ================================================================================================
 -- LSP
