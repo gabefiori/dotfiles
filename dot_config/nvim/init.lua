@@ -129,19 +129,10 @@ local treesitter = require('nvim-treesitter')
 local parsers = treesitter.get_installed()
 
 treesitter.install({
-    "bash",
-    "c",
-    "fish",
-    "go",
-    "lua",
-    "odin",
-    "python",
-    "rust",
-    "toml",
-    "vim",
-    "vimdoc",
-    "yaml",
-    "zig"
+    "bash", "fish",
+    "toml", "yaml", "json",
+    "vim", "vimdoc",
+    "c", "go", "lua", "odin", "zig", "python"
 })
 
 vim.api.nvim_create_autocmd('FileType', {
