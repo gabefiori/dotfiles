@@ -123,7 +123,7 @@ vim.keymap.set("n", "<leader>fr", ":FzfLua live_grep_native resume=true<CR>")
 vim.cmd.colorscheme("kanagawa")
 
 -- ================================================================================================
--- Treesitter
+-- TREESITTER
 -- ================================================================================================
 local treesitter = require('nvim-treesitter')
 local parsers = treesitter.get_installed()
