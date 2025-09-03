@@ -125,11 +125,26 @@ vim.cmd.colorscheme("kanagawa")
 -- ================================================================================================
 -- Treesitter
 -- ================================================================================================
-local languages = require("languages")
-require('nvim-treesitter').install(languages)
+local treesitter = require('nvim-treesitter')
+
+treesitter.install({
+    "bash",
+    "c",
+    "fish",
+    "go",
+    "lua",
+    "odin",
+    "python",
+    "rust",
+    "toml",
+    "vim",
+    "vimdoc",
+    "yaml",
+    "zig"
+})
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = languages,
+    pattern = treesitter.get_installed(),
     callback = function()
         vim.treesitter.start()
         vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
