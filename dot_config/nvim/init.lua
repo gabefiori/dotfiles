@@ -126,6 +126,7 @@ vim.cmd.colorscheme("kanagawa")
 -- Treesitter
 -- ================================================================================================
 local treesitter = require('nvim-treesitter')
+local parsers = treesitter.get_installed()
 
 treesitter.install({
     "bash",
@@ -144,7 +145,7 @@ treesitter.install({
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = treesitter.get_installed(),
+    pattern = parsers,
     callback = function()
         vim.treesitter.start()
         vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
